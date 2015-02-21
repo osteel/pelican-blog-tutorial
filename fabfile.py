@@ -19,7 +19,7 @@ sitename = 'blog'
 symlink_folder = 'output'
 
 # Git repository
-git_repository = 'git@bitbucket.org:osteel/blog.git'
+git_repository = 'git@github.com:osteel/pelican-blog-tutorial.git'
 
 # Rackspace Cloud Files configuration settings
 env.cloudfiles_username = 'my_rackspace_username'
@@ -81,8 +81,8 @@ def provision():
     if run('test -d %s/%s' % (log_path, sitename), warn_only=True).failed:
         sudo('mkdir %s/%s' % (log_path, sitename))
 
-    if run('test -d %' % root_path, warn_only=True).failed:
-        sudo('mkdir %' % root_path)
+    if run('test -d %s' % root_path, warn_only=True).failed:
+        sudo('mkdir %s' % root_path)
 
     if run('git -v', warn_only=True).failed:
         sudo('apt-get install -y git-core')
