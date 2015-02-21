@@ -1,5 +1,6 @@
 output/*
 *.py[cod]
+cache/
 .vagrant/
 .DS_Store
 

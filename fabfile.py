@@ -127,5 +127,5 @@ def publish():
             with prefix('WORKON_HOME=$HOME/.virtualenvs'):
                 with prefix('source /usr/local/bin/virtualenvwrapper.sh'):
                     run('workon blog')
-                    run('pip install -r requirements.txt')
+                    sudo('pip install -r requirements.txt')
                     run('fab preview')

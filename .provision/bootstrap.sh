@@ -3,9 +3,6 @@
 # update stuff
 sudo apt-get update
 
-# vim
-#sudo apt-get -y install vim
-
 # git
 sudo apt-get install -y git-core
 
