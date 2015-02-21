@@ -1,7 +1,7 @@
 output/*
 *.py[cod]
 .vagrant/
-.DS_Store
+#.DS_Store
 
 # Installer logs
 pip-log.txt
