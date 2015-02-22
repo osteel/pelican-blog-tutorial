@@ -17,7 +17,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     local.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "~/.ssh/insecure_private_key"
 
     # Install stuff
-    local.vm.provision :shell, :path => ".provision/bootstrap.sh"
+    local.vm.provision :shell, :path => ".provision/bootstrap.sh", privileged: false
   end
 
   config.vm.define "server" do |server|

@@ -27,11 +27,13 @@ source ~/.bashrc
 # fabric
 sudo pip install Fabric
 
-# create and activate a virtual environment. From now on, run 'workon blog'
-# to activate the virtual environment
+# create and activate a virtual environment
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
 mkvirtualenv blog
 
 # install pip dependencies
+cd /vagrant
 pip install -r requirements.txt
 
 # exit virtual environment

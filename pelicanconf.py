@@ -34,13 +34,6 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-# Theme
-THEME = "theme"
-
 # URLs
 ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}.html'
 ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}.html'
-
-# Plugins
-PLUGIN_PATHS = ['plugins']
-PLUGINS = ['liquid_tags']
