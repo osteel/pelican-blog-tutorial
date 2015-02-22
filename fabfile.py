@@ -73,6 +73,7 @@ def cf_upload():
 def provision():
     if run('nginx -v', warn_only=True).failed:
         sudo('apt-get -y install nginx')
+        sudo('rm /etc/nginx/sites-available/default')
     put('./.provision/blog.conf', '/etc/nginx/sites-available/blog.conf', use_sudo=True)
     sudo('rm -f /etc/nginx/sites-enabled/blog.conf')
     sudo('ln -s /etc/nginx/sites-available/blog.conf /etc/nginx/sites-enabled/blog.conf')
@@ -126,6 +127,6 @@ def publish():
             run('git pull origin master')
             with prefix('WORKON_HOME=$HOME/.virtualenvs'):
                 with prefix('source /usr/local/bin/virtualenvwrapper.sh'):
-                    run('workon blog')
+                    run('workon %s' % sitename)
                     sudo('pip install -r requirements.txt')
                     run('fab preview')
