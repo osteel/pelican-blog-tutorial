@@ -19,7 +19,7 @@ sitename = 'blog'
 symlink_folder = 'output'
 
 # Git repository
-git_repository = 'git@github.com:osteel/pelican-blog-tutorial.git'
+git_repository = ''
 
 # Rackspace Cloud Files configuration settings
 env.cloudfiles_username = 'my_rackspace_username'
@@ -74,10 +74,10 @@ def provision():
     if run('nginx -v', warn_only=True).failed:
         sudo('apt-get -y install nginx')
         sudo('rm /etc/nginx/sites-available/default')
+        sudo('service nginx start')
     put('./.provision/blog.conf', '/etc/nginx/sites-available/blog.conf', use_sudo=True)
     sudo('rm -f /etc/nginx/sites-enabled/blog.conf')
     sudo('ln -s /etc/nginx/sites-available/blog.conf /etc/nginx/sites-enabled/blog.conf')
-    sudo('service nginx restart')
 
     if run('test -d %s/%s' % (log_path, sitename), warn_only=True).failed:
         sudo('mkdir %s/%s' % (log_path, sitename))
@@ -99,9 +99,13 @@ def provision():
     if run('virtualenv --version', warn_only=True).failed:
         sudo('pip install virtualenv')
         sudo('pip install virtualenvwrapper')
+        run('echo "export WORKON_HOME=$HOME/.virtualenvs" >> /home/vagrant/.bashrc')
+        run('echo "source /usr/local/bin/virtualenvwrapper.sh" >> /home/vagrant/.bashrc')
         with prefix('WORKON_HOME=$HOME/.virtualenvs'):
             with prefix('source /usr/local/bin/virtualenvwrapper.sh'):
                 run('mkvirtualenv %s' % sitename)
+
+    sudo('service nginx restart')
 
 @hosts(production)
 def publish():
