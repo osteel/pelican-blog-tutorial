@@ -1,6 +1,6 @@
 #Pelican blog tutorial
 
-Repository to illustrate the [Install and deploy a Pelican blog using Fabric with no Python background](http://blog.osteel.me/posts/2015/02/22/install-and-deploy-a-pelican-blog-using-fabric-with-no-python-background.html "Install and deploy a Pelican blog using Fabric with no Python background") series.
+Repository to illustrate the [Install and deploy a Pelican blog using Fabric](http://blog.osteel.me/posts/2015/02/24/install-and-deploy-a-pelican-blog-using-fabric-part-1-local-environment.html "Install and deploy a Pelican blog using Fabric") series.
 
 Its aim is to quickly get a Pelican blog running locally and to provide an easy way to test the provisionning of a server and the publication of content with Fabric.
 
@@ -29,7 +29,7 @@ From a new terminal, start the *"server"* machine:
 
     vagrant up server
 
-From the *"local"* machine:
+*ssh* the *"local"* machine and run:
 
     cd /vagrant
     fab provision
