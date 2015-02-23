@@ -10,9 +10,12 @@ Clone the project:
 
     git clone git@github.com:osteel/pelican-blog-tutorial.git
 
-Change the origin for your own repository and push.
+Change the origin for your own repository and push:
 
-Open *"fabfile.py"* and assign your repository to the *"git_repository"* variable (e.g. *"git@github.com:username/my-blog.git"*).
+    git remote set-url origin git@github.com:username/my-blog.git
+    git push -u origin --all
+
+Open *"fabfile.py"* and assign your repository to the *"git_repository"* variable.
 
 Download VirtualBox at [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads "VirtualBox - Downloads") (*"platform packages"*) and install it.  
 Download Vagrant at [https://www.vagrantup.com/downloads.html](https://www.vagrantup.com/downloads.html "Vagrant - Downloads") and install it.
@@ -29,7 +32,7 @@ From a new terminal, start the *"server"* machine:
 
     vagrant up server
 
-*ssh* the *"local"* machine and run:
+*ssh* the *"local"* machine (`vagrant ssh local`) and run:
 
     cd /vagrant
     fab provision
